@@ -38,28 +38,23 @@ end
 
 
 def createTag(vtag)
+	if vtag.key.empty? || vtag.application.empty? || vtag.subsystem.empty? || vtag.name.empty? || vtag.timestamp.empty?
+		raise PluginException.new("One of the parameters are empty")
+	end
 	response = HTTP::Client.get("https://api.coralogix.com/api/v1/addTag?key=#{vtag.key}&application=#{vtag.application}&subsystem=#{vtag.subsystem}&name=#{vtag.name}&timestamp=#{vtag.timestamp}")
 	puts response
 end
 
 
-def plugin
-	key = 				param("key")
+def run!
+	key = param("key")
 	application = param("application")
 	subsystem = 	param("subsystem")
 	name = 				param("name")
 	timestamp = 	param("timestamp")
 
+	createTag(VersionTag.new(key, application, subsystem, name, timestamp))
 end
-
-key = ENV["COR_KEY"]
-vtag = VersionTag.new(key, "staging", "all", "Omer", Time.now.to_s("%Y-%m-%d:%H:%M:%S"))
-#puts Time.now.to_s("%Y-%m-%d:%H:%M:%S")
-#YYYY-MM-DD:HH:mm:ss
-#puts test.key
-#puts param("omer")
-#createTag(vtag)
-
 
 
 

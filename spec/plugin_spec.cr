@@ -1,6 +1,8 @@
 require "spec"
 require "../dcv"
 
+key = ENV["COR_KEY"]
+
 describe "Parameter function is functional: " do
 	it "correctly returnes the uppercase PLUGIN_ form" do
 		ENV["PLUGIN_TESTME"] = "myplugin"
@@ -13,20 +15,30 @@ describe "Parameter function is functional: " do
 		end
 	end
 
-	it "raises an error if the parameter does not exist in the env" do
-		expect_raises(PluginException) do
+	it "raises a key error if the parameter does not exist in the env" do
+		expect_raises(KeyError) do
 			param("NONEXISTING")
 		end
 	end
-
-
-#	it "raises an error if one of the class fields are missing" do 
-#		expect_raises(Exception) do
-#			vtag = VersionTag.new(key, "staging", "all", "Omer", Time.now.to_s("%Y-%m-%d:%H:%M:%S"))
-#			versionTag = 
-#			createTag(versionTag)
-
-
-
 end
+
+describe "Creating a tag: " do
+	it "raises an error if one of the class fields are missing" do 
+		expect_raises(PluginException) do
+			vtag = VersionTag.new("", "staging", "all", "Omer", Time.now.to_s("%Y-%m-%d:%H:%M:%S"))
+			createTag(vtag)
+		end
+	end
+end
+
+describe "Running the Plugin: " do
+	it "raises and error if one of the parameters are missing" do 
+		expect_raises(KeyError) do
+			fields = ["key", "subsystem", "name", "timestamp"]
+			fields.each { |field| ENV[field] = "x" }
+			run!
+		end
+	end
+end
+
 
