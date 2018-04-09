@@ -1,0 +1,1 @@
+# drone-coralogix-version-plugin
