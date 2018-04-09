@@ -3,11 +3,11 @@
 require "http/client"
 
 class VersionTag
-	@key :					String
+	@key :		String
 	@application : 	String
-	@subsystem :		String
-	@name : 				String
-	@timestamp : 		String
+	@subsystem :	String
+	@name : 	String
+	@timestamp : 	String
 	
 	getter :key
 	getter :application
