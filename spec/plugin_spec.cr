@@ -1,5 +1,5 @@
 require "spec"
-require "../dcv"
+require "../src/dcv"
 
 key = ENV["COR_KEY"]
 
