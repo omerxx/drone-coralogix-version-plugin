@@ -42,7 +42,7 @@ def createTag(vtag)
 		raise PluginException.new("One of the parameters are empty")
 	end
 	response = HTTP::Client.get("https://api.coralogix.com/api/v1/addTag?key=#{vtag.key}&application=#{vtag.application}&subsystem=#{vtag.subsystem}&name=#{vtag.name}&timestamp=#{vtag.timestamp}")
-	puts response
+	puts response.body
 end
 
 
@@ -55,6 +55,4 @@ def run!
 
 	createTag(VersionTag.new(key, application, subsystem, name, timestamp))
 end
-
-
 
