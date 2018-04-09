@@ -23,7 +23,6 @@ class VersionTag
 
 	def initialize(@key, @application, @subsystem, @name, @timestamp)
 	end
-
 end
 
 
