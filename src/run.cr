@@ -1,3 +1,3 @@
-require "./dcv"
+require "./plugin"
 
 run!
