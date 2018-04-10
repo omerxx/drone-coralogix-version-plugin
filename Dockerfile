@@ -2,4 +2,4 @@ FROM scratch
 
 COPY run /
 
-CMD [ "/run" ]
+CMD ["/run"]
