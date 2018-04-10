@@ -1,0 +1,19 @@
+pipeline:
+  test-and-build:
+    image: crystallang/crystal 
+    commands:
+      - crystal spec
+      - crystal build src/run.cr --static --release
+    when:
+      branch: [master]
+
+  docker-publish:
+    image: plugins/docker
+    repo: omerxx/drone-coralogix-version-plugin
+    tags: 
+      - latest
+      - ${DRONE_BUILD_NUMBER}
+    secrets: [ docker_username, docker_password ]
+    when:
+      branch: [master]
+
