@@ -54,8 +54,10 @@ def createTag(vtag)
   if vtag.timestamp.empty?
     vtag.timestamp = Time.now.to_s("%Y-%m-%d:%H:%M:%S")
   end
+  
+  params = "/api/v1/addTag?key=#{vtag.key}&application=#{vtag.application}&subsystem=#{vtag.subsystem}&name=#{vtag.name}&timestamp=#{vtag.timestamp}"
 
-  response = HTTP::Client.get "https://api.coralogix.com/api/v1/addTag?key=#{vtag.key}&application=#{vtag.application}&subsystem=#{vtag.subsystem}&name=#{vtag.name}&timestamp=#{vtag.timestamp}"
+  response = HTTP::Client.new("api.coralogix.com", tls: true).get(params)
 
   puts response.body
   puts response.status_code
