@@ -63,11 +63,11 @@ end
 
 
 def run!
-  key = param("key")
-  application = param("application")
-  subsystem =   param("subsystem")
-  name =        param("name")
-  timestamp =   param("timestamp")
+  key =         param("dckey")
+  application = param("dcapplication")
+  subsystem =   param("dcsubsystem")
+  name =        param("dcname")
+  timestamp =   param("dctimestamp")
 
   return createTag(VersionTag.new(key, application, subsystem, name, timestamp))
 end
