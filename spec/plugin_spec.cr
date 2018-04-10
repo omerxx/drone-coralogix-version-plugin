@@ -13,6 +13,10 @@ describe "Parameter function is functional: " do
     end
   end
 
+  it "returns empty if timestamp is not present" do
+    param("dctimestamp").empty?.should be_true
+  end
+
   it "raises a key error if the parameter does not exist in the env" do
     expect_raises(KeyError) do
       param("NONEXISTING")

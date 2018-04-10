@@ -34,7 +34,7 @@ def param(name)
     raise PluginException.new("ERROR! - no variable name")
   end
 
-  unless name == "timestamp"
+  unless name == "dctimestamp"
     return ENV["PLUGIN_#{name.upcase}"]
   else
     begin
