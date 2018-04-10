@@ -1,0 +1,5 @@
+drone-coralogix-plugin:
+  image: crystallang/crystal
+  volumes:
+    - .:/app
+  command: ["tail", "-f", "/dev/null"]
