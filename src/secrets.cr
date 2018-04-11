@@ -1,10 +1,10 @@
 require "json"
 
 def secrets_manager
-  ENV["PLUGIN_SECRETS_MANAGER"] ||= nil
+  ENV["PLUGIN_SECRETS_MANAGER"] ||= ""
   sec_manager = ENV["PLUGIN_SECRETS_MANAGER"]
 
-  if sec_manager == "true"
+  if !sec_manager.empty?
     output = IO::Memory.new(4096*4)
     Process.run("aws",["secretsmanager", "get-secret-value", "--secret-id", "corkey"], output: output, error: output)
     jsonkey = JSON.parse(output.to_s)["SecretString"]

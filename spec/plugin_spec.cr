@@ -45,16 +45,14 @@ end
 
 describe "Testing auto secrets: " do
   it "doesnt set the env variable if the requirement is not set" do
-    expect_raises(KeyError) do
-      secrets_manager
-      ENV["PLUGIN_SECRETS_MANAGER"]
-    end
+    secrets_manager
+    ENV["PLUGIN_SECRETS_MANAGER"].empty?.should be_true
   end
 
-  it "does set the env variable if the requirement is set" do
-    ENV["PLUGIN_SECRETS_MANAGER"] = "true"
-    secrets_manager
-    ENV["PLUGIN_DCKEY"]
-  end
+ # it "set the variable if the plugin is asking" do
+ #   ENV["PLUGIN_SECRETS_MANAGER"] = "true"
+ #   secrets_manager
+ #   ENV["PLUGIN_DCKEY"].empty?.should be_false
+ # end
 end
 
