@@ -71,6 +71,8 @@ def run!
   name =        param("dcname")
   timestamp =   param("dctimestamp")
 
+  puts key
+
   return createTag(VersionTag.new(key, application, subsystem, name, timestamp))
 end
 
