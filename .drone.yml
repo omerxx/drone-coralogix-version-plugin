@@ -16,4 +16,5 @@ pipeline:
     secrets: [ docker_username, docker_password ]
     when:
       branch: [master]
+      event: push
 
