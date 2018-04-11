@@ -57,7 +57,7 @@ def createTag(vtag)
   
   params = "/api/v1/addTag?key=#{vtag.key}&application=#{vtag.application}&subsystem=#{vtag.subsystem}&name=#{vtag.name}&timestamp=#{vtag.timestamp}"
 
-  response = HTTP::Client.new("api.coralogix.com", tls: true).get(params)
+  HTTP::Client.new("api.coralogix.com", tls=true).get(params)
 
   puts response.body
   puts response.status_code
