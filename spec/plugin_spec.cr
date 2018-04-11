@@ -34,7 +34,7 @@ describe "Creating a tag: " do
 end
 
 describe "Running the Plugin: " do
-  it "raises and error if one of the parameters are missing" do 
+  it "raises an error if one of the parameters are missing" do 
     expect_raises(KeyError) do
       ["key", "subsystem", "name", "timestamp"].each { |field| ENV[field] = "x" }
       run!
