@@ -1,6 +1,5 @@
 require "spec"
 require "../src/plugin"
-require "../src/secrets"
 
 describe "Parameter function is functional: " do
   it "correctly returnes the uppercase PLUGIN_ form" do
@@ -43,16 +42,4 @@ describe "Running the Plugin: " do
   end
 end
 
-describe "Testing auto secrets: " do
-  it "doesnt set the env variable if the requirement is not set" do
-    secrets_manager
-    ENV["PLUGIN_SECRETS_MANAGER"].empty?.should be_true
-  end
-
- # it "set the variable if the plugin is asking" do
- #   ENV["PLUGIN_SECRETS_MANAGER"] = "true"
- #   secrets_manager
- #   ENV["PLUGIN_DCKEY"].empty?.should be_false
- # end
-end
 
