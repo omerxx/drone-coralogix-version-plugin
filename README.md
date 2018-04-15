@@ -75,4 +75,3 @@ The API key to call Coralogix's API. Only mandatory if Chamber and SSM are not s
 A timestamp in the format `yyyy-mm-dd:HH:mm`
 
 
-
