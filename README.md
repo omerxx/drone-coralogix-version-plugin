@@ -1,4 +1,4 @@
-# drone-coralogix-version
+# Drone Coralogix Versioning plugin
 A Drone plugin that reports versions to coralogix API
 
 ### Build
