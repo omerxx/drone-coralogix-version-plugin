@@ -3,7 +3,6 @@ pipeline:
     image: jrei/crystal-alpine
     commands:
       - crystal spec
-      - crystal build src/run.cr --release
     when:
       branch: [master, alpine]
 
