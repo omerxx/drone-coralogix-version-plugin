@@ -1,9 +1,8 @@
 pipeline:
-  test-and-build:
-    image: crystallang/crystal 
+  test:
+    image: jrei/crystal-alpine
     commands:
       - crystal spec
-      - crystal build src/run.cr --static --release
     when:
       branch: [master]
 
