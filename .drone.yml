@@ -4,16 +4,16 @@ pipeline:
     commands:
       - crystal spec
     when:
-      branch: [master, alpine]
+      branch: [master]
 
   docker-publish:
     image: plugins/docker
     repo: omerxx/drone-coralogix-version-plugin
     tags: 
-      - alpine
+      - latest
       - ${DRONE_BUILD_NUMBER}
     secrets: [ docker_username, docker_password ]
     when:
-      branch: [master, alpine]
+      branch: [master]
       event: push
 
