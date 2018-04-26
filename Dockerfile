@@ -1,10 +1,13 @@
-FROM crystallang/crystal
+# Multi stage container for build and running the binary
 
-RUN apt-get update && apt-get install -y wget \
-    && wget https://github.com/segmentio/chamber/releases/download/v2.0.0/chamber-v2.0.0-linux-amd64 \
-    && chmod +x chamber* \
-    && mv chamber* /usr/local/bin/chamber
+FROM jrei/crystal-alpine as builder
+COPY . /opt/app
+WORKDIR /opt/app
+RUN crystal build --release /opt/app/src/run.cr
 
-COPY run* /
 
-CMD ["/run.sh"]
+FROM jrei/crystal-alpine
+WORKDIR /opt/app
+COPY --from=builder /opt/app/run /
+CMD ["/run"]
+

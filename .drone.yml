@@ -1,20 +1,20 @@
 pipeline:
-  test-and-build:
-    image: crystallang/crystal 
+  test:
+    image: jrei/crystal-alpine
     commands:
       - crystal spec
-      - crystal build src/run.cr --static --release
+      - crystal build src/run.cr --release
     when:
-      branch: [master]
+      branch: [master, alpine]
 
   docker-publish:
     image: plugins/docker
     repo: omerxx/drone-coralogix-version-plugin
     tags: 
-      - latest
+      - alpine
       - ${DRONE_BUILD_NUMBER}
     secrets: [ docker_username, docker_password ]
     when:
-      branch: [master]
+      branch: [master, alpine]
       event: push
 
