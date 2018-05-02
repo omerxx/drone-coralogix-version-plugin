@@ -25,8 +25,8 @@ docker build --rm=true -t omerxx/drone-coralogix-version-plugin .
 
 
 ### Usage
-The plugin uses AWS Systems Manager (SSM) in order to pull secrets, using [Chmber](https://github.com/segmentio/chamber).
-This behavior is default and can be overridden using the `dskey` parameter.
+The plugin uses AWS Systems Manager (SSM) in order to pull secrets, using [Chamber](https://github.com/segmentio/chamber).
+This behavior is default and can be overridden using the `dckey` parameter.
 
 ```yaml
   coralogix-version-tag:
