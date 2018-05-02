@@ -8,6 +8,9 @@ RUN crystal build --release /opt/app/src/run.cr
 
 FROM jrei/crystal-alpine
 WORKDIR /opt/app
+RUN wget https://github.com/segmentio/chamber/releases/download/v2.0.0/chamber-v2.0.0-linux-amd64
+RUN chmod +x chamber-v2.0.0-linux-amd64
+RUN mv chamber-v2.0.0-linux-amd64 /usr/local/bin/chamber
 COPY --from=builder /opt/app/run /
 CMD ["/run"]
 
